@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <h2>Viewing Climate Change by Glacier Altitude Decline: Online Climatology Database</h2>
+        <h5>Developed by: Samuel Clear</h5>
+        <div>Data Derived From: World Glacial Monitoring Service and the World Bank Group</div><br>
+
+    </head>
+
+    <body>
+        <form method="POST">
+            <p>
+                As we progress into the 21st Century, our average global surface temperature has increased by 0.32
+                degrees Fahrenheit each decade since the 1981 (www.climate.gov). Each decade's elevating temperatures have had a devastating
+                impact on communities all across the world, whether it be victims of Hurricane Sandy or Dorian who were
+                impacted by the increased storm surge severities and the increased frequency of tropical storms, or the
+                monsoon season in August leading to flooding in parts of Pakistan, to glacial landslides in Alaska and
+                Greenland caused by global warming. Each of these hazards will become only more prevalent as the China,
+                the United States, and countries in Europe continue to release greenhouse gases into the environment such
+                as Methane and Carbon Dioxide, which trap more solar energy in the Earth's Atmosphere (Albedo) with each
+                passing year.<br><br>
+
+                To measure the impact of our changing climate, you as a user can compare data on changing glacier elevation,
+                sea level, and global surface temperatures to search for relationships between different systems in the
+                atmosphere, hydrosphere, and cryosphere of Earth. With each of these searches, you have three options:
+                create a graph to display the data for one variable and location (Ex. Glacier Elevation in Greenland from
+                2014-2019), create a graph comparing two variables or locations for one variable or location
+                (Ex. Comparing Surface Temperature Average and Rising Sea Level Differences in Iceland), or you can
+                compare two different variables between two different locations (Ex. Glacier Elevation in Antarctica to
+                Rising Sea Level in Australia). Each of these options can be selected from the input bars below.<br><br>
+
+                However, each of these variables does not have the same amount of data.
+                Current Glacial Density Data contains data from many countries and continents around the world such as
+                Antarctica, Nepal, and Pakistan among others from dates between 1950-2010, but data retrieved on glacier
+                elevation varies from 5-6 dates for one country, to thousands of data points in others. Current Average
+                Surface Temperature Data this website contains data for the countries of Canada, Chile, Greenland,
+                Iceland, Pakistan, and the United States of America between the years of 1901 to 2021. Each of these
+                countries are the same for Sea Level Data, however the website database only contains data from between
+                1993 and 2021. However, the graphs created in the website account for this.<br><br>
+
+                As an example of each of these input options, below are three examples of each of the possible input options.
+            </p>
+
+            <div>
+                Example One: Viewing Glacial Elevation Data in Greenland between 2014 and 2019, retrieved from entering the following:<br>
+                Location: Greenland<br>
+                (Optional) Location Two:<br>
+                Variable: Glacier Elevation<br>
+                (Optional) Variable Two:<br>
+                Time Period: From 2014 To 2019<br>
+                <form method="POST">
+                    <input type="text" name="exampleNumber" value="example3" required hidden>
+                    <input type="submit" value="View Graphed Data">
+                </form>
+            </div>
+
+            <div>
+                Example Two: Comparing Sea Level and Average Surface Temperature Data in Iceland between 2000 and 2019, retrieved from entering the following:<br>
+                Location: Greenland<br>
+                (Optional) Location Two:<br>
+                Variable: Sea Level<br>
+                (Optional) Variable Two: Average Surface Temperature<br>
+                Time Period: From 2000 To 2019<br>
+                <form method="POST">
+                    <input type="text" name="exampleNumber" value="example3" required hidden>
+                    <input type="submit" value="View Graphed Data">
+                </form>            </div>
+
+            <div>
+                Example Three: Comparing Glacial Elevation Data in Antarctica and Sea Level Data in Greenland between 2000 and 2020, retrieved from entering the following:<br>
+                Location: Antarctica<br>
+                (Optional) Location Two: Greenland<br>
+                Variable: Glacier Elevation<br>
+                (Optional) Variable Two: Sea Level<br>
+                Time Period: From 2000 To 2020<br>
+                <!-- This piece of code was authored by Anthony and I do not plan to use it. -->
+                <form method="POST">
+                    <input type="text" name="exampleNumber" value="example3" required hidden>
+                    <input type="submit" value="View Graphed Data">
+                </form>
+                (Remember, for two variables and two countries, the first location matches with the first variable <br>and the second location matches with the second variable!!)
+            </div>
+
+            <br>
+
+            <div>
+                Please note that this database does not contain data from every country's glacial elevation,
+                sea level, and surface temperature readings. Each of the countries chosen were selected
+                because of their large concentration of glaciers, as well as being prevalent countries
+                natural disasters occurring today. However, from the websites of the World Bank Group and
+                the World Glacier Monitoring Service linked below, you can find more data from countries
+                across the world to view how your area of study may also be affected by glacial melt or
+                rising temperatures. Additionally, you can petition for another country by selecting the
+                "Request a Country Addition" button below! If we receive over 25 users request for a
+                country to be added to the database, we will release an updated version of the database
+                and the user interface containing the new country's data that we can find!
+
+                <br>
+                <form method="POST">
+                    <input type="text" name="inputType" value="petition" hidden>
+                    <input type="submit" name="Request a Country Addition">
+                </form>
+            </div>
+
+            <br>
+
+            <div>
+                Input Variables and Countries for a Data Set Below:
+            </div>
+
+            <form method="POST">
+                <label for="locationOne">Location One: </label>
+                <select name="locationOne" id="locationOne">
+                    <option value="Canada">Canada</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Greenland">Greenland</option>
+                    <option value="Iceland">Iceland</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="United States of America">United States of America</option>
+                </select>
+                <br>
+
+                <label for="locationTwo">(Optional) Location Two: </label>
+                <select name="locationTwo" id="locationTwo" value="">
+                    <option value="Canada">Canada</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Greenland">Greenland</option>
+                    <option value="Iceland">Iceland</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="United States of America">United States of America</option>
+                </select>
+                <br>
+
+                <label for="variableOne">Variable: </label>
+                <select name="variableOne" id="variableOne" value="" required>
+                    <option value="Glacial Elevation">Glacial Elevation</option>
+                    <option value="Surface Temperature Average">Surface Temperature Average</option>
+                    <option value="Sea Level">Sea Level</option>
+                </select>
+                <br>
+
+                <label for="variableTwo">(Optional) Variable Two: </label>
+                <select name="variableTwo" id="variableTwo" value="">
+                    <option value="Glacial Elevation">Glacial Elevation</option>
+                    <option value="Surface Temperature Average">Surface Temperature Average</option>
+                    <option value="Sea Level">Sea Level</option>
+                </select>
+                <br>
+
+                <label>From </label>
+                <input type="number" name="yearStart" id="yearStart" size="4">
+                <label> To </label>
+                <input type="number" name="yearEnd" id="yearEnd" size="4">
+                <br>
+                <input type="submit" value="Create Graph/s">
+                <br>
+                <label id="invalidInputMessage" hidden></label>
+            </form>
+
+            <form method="POST">
+                <br>
+                <label id="adminLabel" hidden></label>
+                <input type="text" id="adminInputSection" name="inputType" value="adminInput" hidden>
+                <input type="submit" id="adminButton" value="Search/Modify Database" hidden>
+                <input type="text" name="inputType" value="null" hidden>
+            </form>
+
+            <noscript>Please re-load this site in a browser that can process Javascript!</noscript>
+
+            <!-- Hidden Admin Input Button Functionality and Invalid User Input Label-->
+            <script text="type/javascript">
+                var authorizedUser = {{ authorizedUser }}
+                var invalidInput = {{ invalidInput }}
+                if (authorizedUser == 1) {
+                    document.getElementById("adminLabel").hidden = false
+                    document.getElementById("adminLabel").innerHTML = "(Admin) If you would like to search for, add, remove, or replace any data in the <br> database, select the button \"Search/Modify Database\" button below:<br>"
+                    document.getElementById("adminButton").hidden = false
+                }
+                // TODO: Input does not show up in function!
+                if (invalidInput == 1) {
+                    document.getElementById("invalidInputMessage").hidden = false
+                    document.getElementById("invalidInputMessage").innerHTML = "Invalid input entered or received, please re-enter input or contact a Systems Administrator!"
+                    document.getElementById("invalidInputMessage").style.color = "red"
+                }
+            </script>
+
+            <!-- Hidden Invalid User Input Label-->
+
+            <script>
+            function getValues(pLocationOne, pLocationTwo, pVariableOne, pVariableTwo, pStartYear, pEndYear) {
+                setLocationOne(pLocationOne)
+                setVariableOne(pVariableOne)
+                setLocationTwo(pLocationTwo)
+                setVariableTwo(pVariableTwo)
+                setYearStart(pStartYear)
+                setYearEnd(pEndYear)
+                document.getElementById("inputs").submit()
+            }
+            function setLocationOne(gLocation) {
+                document.getElementById("locationOne").value = gLocation
+            }
+            function setLocationTwo(gLocation) {
+                document.getElementById("locationTwo").value = gLocation
+            }
+            function setVariableOne(gVariable) {
+                document.getElementById("variableOne").value = gVariable
+            }
+            function setVariableTwo(gVariable) {
+                document.getElementById("variableTwo").value = gVariable
+            }
+            function setYearStart(gYear) {
+                document.getElementById("yearStart").value = gYear
+            }
+            function setYearEnd(gYear) {
+                document.getElementById("yearEnd").innerHTML = gYear
+            }
+        </script>
+        </form>
+
+        <!-- TODO: Add references for Glacier Elevation, Surface Temperature, and Sea Level Databases, as well as any additional pictures! -->
+        <h3>How You can Help:</h3>
+        <p>
+            Currently, Governments and Major Polluting International Legislation control the most power over Pollutants (Places where you can reach out to representatives.)
+            However, you can reach out to support desperate communities negatively impacted by these issues:
+            - Pakistan Flooding Issues
+            - Haiti Tropical Storm Impacts
+            - Storm Surge and Rising Sea-Levels in Indonesia and Vanuatu
+
+            Finally, you can also spread the word of the impact of melting glaciers, rising sea-levels, and increasing temperatures by refering your community-members to these following links:
+            - Climate Change Information: https://www.worldbank.org/en/topic/climatechange
+            - New Coastline or Flood Risks in the Coming Decades: https://coast.noaa.gov/digitalcoast/tools/slr.html
+            - Article on What the World would Look Like if All the Glaciers Melted: https://www.nationalgeographic.co.uk/environment-and-conservation/2017/11/what-the-world-would-look-like-if-all-the-ice-melted
+        </p>
+
+        <h4>References:</h4><br>
+        <p>
+            Glacier Density Data Download Page:<br>
+                WGMS (2020): Fluctuations of Glaciers Database. World Glacier Monitoring Service, Zurich, Switzerland. Digital Media.<br>
+                             DOI: 10.5904/wgms-fog-2020-08. Online access: <a href="http://dx.doi.org/10.5904/wgms-fog-2020-08">http://dx.doi.org/10.5904/wgms-fog-2020-08</a><br>
+            Glacier Density Database: <a href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/insitu-glaciers-elevation-mass?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/insitu-glaciers-elevation-mass?tab=overview</a><br>
+            Global Warming Database (Select By Country): <a href="https://climateknowledgeportal.worldbank.org/country/greenland/climate-data-historical"></a><br>
+            Rising Sea Levels Database (Select By Country): <a href="https://climateknowledgeportal.worldbank.org/country/greenland/climate-data-historical"></a><br>
+            SQLite-to-Pandas Python Support: <a href="https://datacarpentry.org/python-ecology-lesson/09-working-with-sql/index.html">https://datacarpentry.org/python-ecology-lesson/09-working-with-sql/index.html</a><br>
+            Adding Subplots in Plotly: <a href="https://plotly.com/python/subplots/">https://plotly.com/python/subplots/</a><br>
+            Increase in Atmospheric Temperature Statistics Page: <a href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature">https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature</a><br>
+            Home Screen Glacier Picture: <a href="https://www.nationalgeographic.com/environment/article/big-thaw">https://www.nationalgeographic.com/environment/article/big-thaw</a><br>
+        </p>
+
+    </body>
+</html>

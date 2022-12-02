@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- TODO: Fix Background Image for Flask HTML Interface of Site -->
+    <style>
+        body {
+            background-image: url('/media/glacierMelt.jpg');
+            background-origin: border-box;
+            background-size: cover;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- Website Page Title and Details-->
+    <meta charset="UTF-8">
+    <h3>Viewing Climate Change Impacts by Glacier Density Impacts: Online Climatology Database</h3>
+    <form method="POST"><br>
+
+        <!--
+        locationToEdit = request.form.get("locationToEdit", string)
+        variableType = request.form.get("variableType", string)
+        valueInDatabase = request.form.get("valueInDatabase", string)
+        valueIntoDatabase = request.form.get("valueIntoDatabase", string)
+        columnName = request.form.get("columnName", string)
+        rowIndex = request.form.get("rowIndex", string)
+        replacementType = request.form.get("replacementType", string)
+        returnToHome = request.form.get("returnToHome", string)
+        -->
+
+        <!-- User Input information-->
+        <label for="locationToEdit">Location To Edit:</label>
+        <select id="locationToEdit" name="locationToEdit">
+            <option value="Canada">Canada</option>
+            <option value="Chile">Chile</option>
+            <option value="Greenland">Greenland</option>
+            <option value="Iceland">Iceland</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="United States of America">United States of America</option>
+        </select><br>
+
+        <label for="variableType">Variable Type To Edit:</label>
+        <select id="variableType" name="variableType">
+            <option value="Glacial Density">Glacial Elevation</option>
+            <option value="Average Surface Temperature">Average Surface Temperature</option>
+            <option value="Sea Level">Sea Level</option>
+            <option value="User Data">User Data</option>
+            <option value="Petition Data">Petition Data</option>
+        </select><br>
+
+        <label for="valueInDatabase">Value Currently in Database (Optional):</label>
+        <input type="text" id="valueInDatabase" name="valueInDatabase"><br>
+        <label for="valueIntoDatabase">Value to Place Into Database (Optional):</label>
+        <input type="text" id="valueIntoDatabase" name="valueIntoDatabase"><br>
+        <label for="columnName">Name of Variable to Modify/Search:</label>
+        <input type="text" id="columnName" name="columnName"><br>
+        <label for="rowIndex">Index of Row to Modify:</label>
+        <input type="text" id="rowIndex" name="rowIndex"><br>
+
+        <label for="replacementType">Type of Replacement/Search Requested:</label>
+        <select id="replacementType" name="replacementType">
+            <option value="Modify">Modify</option>
+            <option value="Remove">Remove</option>
+            <option value="Add">Add</option>
+        </select><br>
+
+        <label id="error_text" hidden><br></label><br>
+        <label id="completion_text" hidden><br></label><br>
+
+        <input type="submit" id="next" value="Modify/Search Data">
+    </form>
+
+    <form method="POST">
+        <input type="text" id="returnToHome" name="returnToHome" value="yes" hidden="true">
+        <input type="submit" value="Return to Home Screen">
+        <input type="text" name="returnToHome" value="no" hidden="true">
+    </form>
+
+    <!-- Label to test "validLogin" Variable: <label id = {{ validLogin }}, value={{ validLogin }}></label> -->
+
+    <!-- Invalid Input Message Function-->
+    <script text="type/javascript">
+        var invalidInput = {{ invalidInput }}
+        var completedInput = {{ completedInput }}
+        if (invalidInput == 1) {
+            document.getElementById("error_text").innerHTML = "Invalid Input Entered. Re-enter valid input based on the different database <br>information above. If you continue to get this problem, please contact your System's Administrator.<br>";
+            document.getElementById("error_text").style.color = "red";
+            document.getElementById("error_text").hidden = false;
+        }
+        if (completedInput == 1) {
+            document.getElementById("completion_text").innerHTML = "Information Successfully Altered!";
+            document.getElementById("completion_text").style.color = "green";
+            document.getElementById("completion_text").hidden = false;
+        }
+    </script>
+
+    <!-- Submit Button and Error Code for Non-JavaScript-Users -->
+    <noscript>Please reload this site with a browser that supports JavaScript.</noscript>
+</body>
+</html>

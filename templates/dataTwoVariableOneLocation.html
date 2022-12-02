@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+    <body>
+        <form method="POST">
+            <h1>Comparing {{ variableOne }} and {{ variableTwo }} Measurements from {{ yearStart }} to {{ yearEnd }} in the Country of {{ locationOne }}</h1>
+            <div id='chart' class='chart'></div>
+            <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+            <script type='text/javascript'>
+                var graphs = {{graphJSON | safe}};
+                Plotly.plot('chart',graphs,{});
+            </script>
+            <input type="submit" value="Return to the Home Screen">
+        </form>
+    </body>
+</html>

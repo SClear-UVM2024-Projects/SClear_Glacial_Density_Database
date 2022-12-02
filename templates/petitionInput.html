@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- TODO: Fix Background Image for Flask HTML Interface of Site -->
+    <style>
+        body {
+            background-image: url('/media/glacierMelt.jpg');
+            background-origin: border-box;
+            background-size: cover;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- Website Page Title and Details-->
+    <meta charset="UTF-8">
+    <h3>Viewing Climate Change Impacts by Glacier Density Impacts: Online Climatology Database</h3>
+    <form method="POST"><br>
+
+        <!-- User Input information -->
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br>
+        <label id="error_text" hidden><br></label><br>
+
+        <!-- Label to test "validLogin" Variable: <label id = {{ validLogin }}, value={{ validLogin }}></label> -->
+
+        <!-- Invalid Input Message Function-->
+        <script text="type/javascript">
+            var invalidInput = {{ invalidInput }}
+            var
+            if (invalidInput == 1) {
+                document.getElementById("error_text").innerHTML = "Invalid Username or Password Entered. Re-enter a valid Username or Password.<br>";
+                document.getElementById("error_text").style.color = "red";
+                document.getElementById("error_text").hidden = false
+            }
+
+        </script>
+
+        <!-- Submit Button and Error Code for Non-JavaScript-Users -->
+        <input type="submit" id="next" value="Log In">
+        <noscript>Please reload this site with a browser that supports JavaScript.</noscript>
+    </form>
+</body>
+</html>
