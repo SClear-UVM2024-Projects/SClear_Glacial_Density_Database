@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <style>
+        body {
+            background-image: url('/media/glacierMelt.jpg');
+            background-origin: border-box;
+            background-size: cover;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- Website Page Title and Details-->
+    <meta charset="UTF-8">
+    <h3>Viewing Climate Change Impacts by Glacier Density Impacts: Online Climatology Database</h3>
+    <form method="POST"><br>
+
+        <p>
+            Using the Input Page:<br><br>
+
+            This Page Allows the Admin to Add, Modify, and Remove Values from the database, as well as search for values by column.<br>
+            First, View a table of the general values below in the database.<br><br>
+
+            (Note: The * Symbol represents a country's name that you search, such as Canada, Chile, etc.)<br><br>
+
+            USERS(USER_ID: integer, Username: string, Password: string, Display_Name: string, User_Access: string)<br>
+
+            PETITIONS(PETITION_ID: integer, Display_Name: string, Country: string, Reason: string)<br>
+
+            GLACIALELEVATION*(ELEVATION_ID: integer, Year: integer, Glacial_Density: real number)<br>
+
+            TEMPERATUREAVERAGES*(TEMPERATURE_ID: integer, Year: integer, Annual_Mean: real number, Five_Year_Smooth: real number)<br>
+
+            SEALEVELGREENLAND(SEA_LEVEL_ID: integer, Month: string, Year: integer: Average_Monthly_Anomaly: real number, Average_Annual_Anomaly: real number)<br><br>
+
+            Now, below are instructions by operation to perform the following methods.<br><br>
+
+            Modify:<br>
+            Modify takes the Variable Type the user wishes to edit, Location (of Data Origin) to Edit, Value to Place into Database, <br>
+            Index of Row of Data to edit, and the Replacement Type "Modify", and modifies the value of the specified row, column, <br>
+            and location to the given value. This function does not require a value for Value In Database, so that section must remain <br>
+            as "NULL". Each of the column names and row indexes must be exact, with the row indexes based off of the ID variables of each <br>
+            table.<br><br>
+
+            Add:<br>
+            Add function takes the Variable Type the user wishes to edit, Location (of Data Origin) to Edit, Variable in Given table,<br>
+            Value to Place into Database, Index of Row of Data to edit, and the Replacement Type "Add" (similar to Modify) and <br>
+            enters/replaces the value at the given row and column of the specified location and variable type in the data table and returns<br>
+            the table with a new row at the end if the Row Index remains "NULL", or modifies the value in the data table if it was!<br><br>
+
+            Remove:<br>
+            Remove Accepts the Location, Data type, value in database, column, and row index from the admin input. Initially, the removal <br>
+            function is set to remove the given row from the row index. However, if the "Value in Database" section is editted, then the <br>
+            function removes the specified column's data at the given row index. <br><br>
+
+            Search:
+            Search function uses the Variable type, location, database column name to search and the specific value in the database to search <br>
+            for particular values based off a "WHERE" condition. This function then creates a table of all the values in the given table that <br>
+            satisfy the condition "{Column Name} == {Value In Database}". This allows the admin to search for values that they would like to <br>
+            alter or remove from the database. <br><br>
+        </p>
+
+        <!--
+        locationToEdit = request.form.get("locationToEdit", string)
+        variableType = request.form.get("variableType", string)
+        valueInDatabase = request.form.get("valueInDatabase", string)
+        valueIntoDatabase = request.form.get("valueIntoDatabase", string)
+        columnName = request.form.get("columnName", string)
+        rowIndex = request.form.get("rowIndex", string)
+        replacementType = request.form.get("replacementType", string)
+        returnToHome = request.form.get("returnToHome", string)
+        -->
+
+        <!-- User Input information-->
+
+        <div>User's Inputs:<br></div>
+        <label for="locationToEdit">Location To Edit:</label>
+        <select id="locationToEdit" name="locationToEdit">
+            <option value="Canada">Canada</option>
+            <option value="Chile">Chile</option>
+            <option value="Greenland">Greenland</option>
+            <option value="Iceland">Iceland</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="United States of America">United States of America</option>
+        </select><br>
+
+        <label for="variableType">Variable Type To Edit:</label>
+        <select id="variableType" name="variableType">
+            <option value="Glacial Elevation">Glacial Elevation</option>
+            <option value="Average Surface Temperature">Average Surface Temperature</option>
+            <option value="Sea Level">Sea Level</option>
+            <option value="User Data">User Data</option>
+            <option value="Petition Data">Petition Data</option>
+        </select><br>
+
+        <label for="valueInDatabase">Value Currently in Database (Optional):</label>
+        <input type="text" id="valueInDatabase" name="valueInDatabase" value="NULL"><br>
+        <label for="valueIntoDatabase">Value to Place Into Database (Optional):</label>
+        <input type="text" id="valueIntoDatabase" name="valueIntoDatabase" value="NULL"><br>
+        <label for="columnName">Name of Variable to Modify/Search:</label>
+        <input type="text" id="columnName" name="columnName" value="NULL"><br>
+        <label for="rowIndex">Index of Row to Modify:</label>
+        <input type="text" id="rowIndex" name="rowIndex" value="NULL"><br>
+
+        <label for="replacementType">Type of Replacement/Search Requested:</label>
+        <select id="replacementType" name="replacementType">
+            <option value="Modify">Modify</option>
+            <option value="Remove">Remove</option>
+            <option value="Add">Add</option>
+            <option value="Search">Search</option>
+        </select><br>
+
+        <label id="error_text" hidden></label>
+        <label id="completion_text" hidden></label>
+
+        <label id="chartHeader" hidden>Data Requested:</label><br>
+        <div id='chart' class='chart' hidden></div>
+
+        <!-- Label to test "validLogin" Variable: <label id = {{ validLogin }}, value={{ validLogin }}></label> -->
+
+        <!-- Invalid Input Message Function-->
+        <script>
+            var invalidInput = {{ invalidInput }}
+            if (invalidInput == 1) {
+                document.getElementById("error_text").innerHTML = "Invalid Username or Password Entered. Re-enter a valid Username or Password.<br>";
+                document.getElementById("error_text").style.color = "red";
+                document.getElementById("error_text").hidden = false;
+            }
+            var completedInput = {{ completedInput }}
+            if (completedInput == 1) {
+                document.getElementById("completion_text").innerHTML = "Information Successfully Altered/Searched!<br>";
+                document.getElementById("completion_text").style.color = "green";
+                document.getElementById("completion_text").hidden = false;
+            }
+        </script>
+        <input type="submit" id="next" value="Modify/Search Data">
+
+        <!-- Invalid Input Message Function-->
+        <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+        <script type='text/javascript'>
+            var graphImported = {{graphImported}}
+            if (graphImported == 1) {
+                var tables = {{dataRequested | safe}};
+                Plotly.plot('chart',tables,{});
+                document.getElementById("chartHeader").hidden = false
+                document.getElementById("chart").hidden = false
+            }
+        </script>
+    </form>
+
+    <form method="POST">
+        <input type="text" id="returnToHome" name="returnToHome" value="yes" hidden="true">
+        <input type="submit" value="Return to Home Screen">
+        <input type="text" name="returnToHome" value="no" hidden>
+    </form>
+
+    <!-- Label to test "validLogin" Variable: <label id = {{ validLogin }}, value={{ validLogin }}></label> -->
+    <!-- Submit Button and Error Code for Non-JavaScript-Users -->
+    <noscript>Please reload this site with a browser that supports JavaScript.</noscript>
+</body>
+</html>
