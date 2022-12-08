@@ -203,7 +203,7 @@ cur.execute("UPDATE glacialElevationCanadaBottom SET Year = 2021 WHERE SURVEY_DA
 cur.execute("UPDATE glacialElevationCanadaBottom SET Year = 2022 WHERE SURVEY_DATE LIKE '2022%'")
 cur.execute("DROP TABLE glacialElevationCanada")
 cur.execute("DROP TABLE IF EXISTS GLACIALELEVATIONCANADA;")
-cur.execute("CREATE TABLE GLACIALELEVATIONCANADA AS SELECT ELEVATION_ID, Year, Glacial_Density FROM glacialElevationCanadaBottom")
+cur.execute("CREATE TABLE GLACIALELEVATIONCANADA AS SELECT ELEVATION_ID, Year, Glacial_Density FROM glacialElevationCanadaBottom LIMIT 100")
 cur.execute("DROP TABLE glacialElevationCanadaBottom")
 
 cur.execute("ALTER TABLE glacialElevationChile ADD Year INT")
@@ -284,7 +284,7 @@ cur.execute("UPDATE glacialElevationChileBottom SET Year = 2021 WHERE SURVEY_DAT
 cur.execute("UPDATE glacialElevationChileBottom SET Year = 2022 WHERE SURVEY_DATE LIKE '2022%'")
 cur.execute("DROP TABLE glacialElevationChile")
 cur.execute("DROP TABLE IF EXISTS GLACIALELEVATIONCHILE;")
-cur.execute("CREATE TABLE GLACIALELEVATIONCHILE AS SELECT ELEVATION_ID, Year, Glacial_Density FROM glacialElevationChileBottom")
+cur.execute("CREATE TABLE GLACIALELEVATIONCHILE AS SELECT ELEVATION_ID, Year, Glacial_Density FROM glacialElevationChileBottom LIMIT 100")
 cur.execute("DROP TABLE glacialElevationChileBottom")
 
 cur.execute("ALTER TABLE glacialElevationGreenland ADD Year INT")
@@ -365,7 +365,7 @@ cur.execute("UPDATE glacialElevationGreenlandBottom SET Year = 2021 WHERE SURVEY
 cur.execute("UPDATE glacialElevationGreenlandBottom SET Year = 2022 WHERE SURVEY_DATE LIKE '2022%'")
 cur.execute("DROP TABLE glacialElevationGreenland")
 cur.execute("DROP TABLE IF EXISTS GLACIALELEVATIONGREENLAND;")
-cur.execute("CREATE TABLE GLACIALELEVATIONGREENLAND AS SELECT ELEVATION_ID, Year, Glacial_Density FROM glacialElevationGreenlandBottom")
+cur.execute("CREATE TABLE GLACIALELEVATIONGREENLAND AS SELECT ELEVATION_ID, Year, Glacial_Density FROM glacialElevationGreenlandBottom LIMIT 100")
 cur.execute("DROP TABLE glacialElevationGreenlandBottom")
 
 cur.execute("ALTER TABLE glacialElevationIceland ADD Year INT")
@@ -446,7 +446,7 @@ cur.execute("UPDATE glacialElevationIcelandBottom SET Year = 2021 WHERE SURVEY_D
 cur.execute("UPDATE glacialElevationIcelandBottom SET Year = 2022 WHERE SURVEY_DATE LIKE '2022%'")
 cur.execute("DROP TABLE glacialElevationIceland")
 cur.execute("DROP TABLE IF EXISTS GLACIALELEVATIONICELAND;")
-cur.execute("CREATE TABLE GLACIALELEVATIONICELAND AS SELECT ELEVATION_ID, Year, Glacial_Density FROM glacialElevationIcelandBottom")
+cur.execute("CREATE TABLE GLACIALELEVATIONICELAND AS SELECT ELEVATION_ID, Year, Glacial_Density FROM glacialElevationIcelandBottom LIMIT 100")
 cur.execute("DROP TABLE glacialElevationIcelandBottom")
 
 cur.execute("ALTER TABLE glacialElevationPakistan ADD Year INT")
@@ -527,7 +527,7 @@ cur.execute("UPDATE glacialElevationPakistanBottom SET Year = 2021 WHERE SURVEY_
 cur.execute("UPDATE glacialElevationPakistanBottom SET Year = 2022 WHERE SURVEY_DATE LIKE '2022%'")
 cur.execute("DROP TABLE glacialElevationPakistan")
 cur.execute("DROP TABLE IF EXISTS GLACIALELEVATIONPAKISTAN;")
-cur.execute("CREATE TABLE GLACIALELEVATIONPAKISTAN AS SELECT ELEVATION_ID, Year, Glacial_Density FROM glacialElevationPakistanBottom")
+cur.execute("CREATE TABLE GLACIALELEVATIONPAKISTAN AS SELECT ELEVATION_ID, Year, Glacial_Density FROM glacialElevationPakistanBottom LIMIT 100")
 cur.execute("DROP TABLE glacialElevationPakistanBottom")
 
 cur.execute("ALTER TABLE glacialElevationUnitedStatesOfAmerica ADD Year INT")
@@ -608,7 +608,7 @@ cur.execute("UPDATE glacialElevationUnitedStatesOfAmericaBottom SET Year = 2021 
 cur.execute("UPDATE glacialElevationUnitedStatesOfAmericaBottom SET Year = 2022 WHERE SURVEY_DATE LIKE '2022%'")
 cur.execute("DROP TABLE glacialElevationUnitedStatesOfAmerica")
 cur.execute("DROP TABLE IF EXISTS GLACIALELEVATIONUNITEDSTATESOFAMERICA;")
-cur.execute("CREATE TABLE GLACIALELEVATIONUNITEDSTATESOFAMERICA AS SELECT ELEVATION_ID, Year, Glacial_Density FROM glacialElevationUnitedStatesOfAmericaBottom")
+cur.execute("CREATE TABLE GLACIALELEVATIONUNITEDSTATESOFAMERICA AS SELECT ELEVATION_ID, Year, Glacial_Density FROM glacialElevationUnitedStatesOfAmericaBottom LIMIT 100")
 cur.execute("DROP TABLE glacialElevationUnitedStatesOfAmericaBottom")
 
 # Change the "DateTime" Column of the data to a "Month" and "Year" column
