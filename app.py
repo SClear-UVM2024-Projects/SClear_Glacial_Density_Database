@@ -22,30 +22,47 @@ import plotly.graph_objects as go
 # Conn is the current database file in SQL that will be edited by changes, while "cur" is the current changes that are being made!
 conn = sqlite3.connect('climateChangeDatabase.db', check_same_thread=False)
 cur = conn.cursor()
-
 app = Flask(__name__)
-
 var = np.polynomial
 
+# Initializing user info for first connection to site
 validUser = 0
-
 _USER_INFO_LEVEL = {"User": 0, "Name": "Unknown"}
-
 validUserInformation = cur.execute("SELECT Username, Password, User_Access, Display_Name FROM USERS").fetchall()
 
+# Dictionary for database titling info
 locationTableNames = [["Canada", "GLACIALELEVATIONCANADA", "TEMPERATURESCANADA", "SEALEVELCANADA"],
                      ["Chile", "GLACIALELEVATIONCHILE", "TEMPERATURESCHILE", "SEALEVELCHILE"],
                      ["Greenland", "GLACIALELEVATIONGREELAND", "TEMPERATURESGREENLAND", "SEALEVELGREENLAND"],
                      ["Iceland", "GLACIALELEVATIONICELAND", "TEMPERATURESICELAND", "SEALEVELICELAND"],
                      ["Pakistan", "GLACIALELEVATIONPAKISTAN", "TEMPERATURESPAKISTAN", "SEALEVELPAKISTAN"],
                      ["United States of America", "GLACIALELEVATIONUNITEDSTATESOFAMERICA", "TEMPERATURESUNITEDSTATESOFAMERICA", "SEALEVELUNITEDSTATESOFAMERICA"]]
+locationNamesAllCaps = {"Canada": "CANADA", "Chile": "CHILE", "Greenland": "GREENLAND", "Iceland": "ICELAND", "Pakistan": "PAKISTAN", "United States of America": "UNITEDSTATESOFAMERICA"}
 
-# TODO: Edge case for same username and password not returning the error message, lower priority!
-
+# Auxiliary Functions for application use
 # To test if the value inputted is a valid input, we must test if any type of number is a float
 # or an integer. We will do this with a "try-except" block from the following source:
 # https://www.programiz.com/python-programming/examples/check-string-number
+def isFloat(valueIntoDatabase):
+    try:
+        float(valueIntoDatabase)
+        return True
+    except ValueError:
+        return False
+    except TypeError:
+        return False
 
+def isInteger(valueIntoDatabase):
+    try:
+        int(valueIntoDatabase)
+        return True
+    except ValueError:
+        return False
+    except TypeError:
+        return False
+
+
+# Application log-in back-end
 @app.route('/', methods=['GET', 'POST'])
 def climateChangeUserInterfaceLogin():
 
@@ -84,8 +101,6 @@ def climateChangeUserInterfaceLogin():
         return redirect('/home_page')
 
 # TODO: Create a home page for PETITIONS for new countries to add to the registry that specifically PETITIONS from a given user on the homepage front!
-# TODO: Create an interface for the graphing segment, possibly make it another drop-down from the off of the home page, Add join graphs to the data! V
-# TODO: Create a pointer variable that allows the website to determine when the user is the admin, then create a drop-down that allows for the admin to add, remove, and replace specific information in the registry V
 # TODO: Make the Home Page look nice by formatting the page (CSS when necessary, HTML as much as I can)!
 
 @app.route('/petition_input', methods=['GET', 'POST'])
@@ -124,25 +139,6 @@ def climateChangeUserInterfacePetitionPage():
         return render_template("petitionInput.html", invalidInput = 1)
 
 
-def isFloat(valueIntoDatabase):
-    try:
-        float(valueIntoDatabase)
-        return True
-    except ValueError:
-        return False
-    except TypeError:
-        return False
-
-def isInteger(valueIntoDatabase):
-    try:
-        int(valueIntoDatabase)
-        return True
-    except ValueError:
-        return False
-    except TypeError:
-        return False
-
-
 @app.route('/admin_input', methods=['GET', 'POST'])
 def climateChangeUserInterfaceInputPage():
 
@@ -151,20 +147,6 @@ def climateChangeUserInterfaceInputPage():
 
     # Collect each of the pieces of info from the HTML Website, including of
     # data to modify and which section of the database the data is.
-    locationToEdit = request.form.get("locationToEdit", string)
-    if locationToEdit == "Canada":
-        locationToEdit = "CANANDA"
-    elif locationToEdit == "Chile":
-        locationToEdit = "CHILE"
-    elif locationToEdit == "Greenland":
-        locationToEdit = "GREENLAND"
-    elif locationToEdit == "Iceland":
-        locationToEdit = "ICELAND"
-    elif locationToEdit == "Pakistan":
-        locationToEdit = "PAKISTAN"
-    elif locationToEdit == "United States of America":
-        locationToEdit = "UNITEDSTATESOFAMERICA"
-    
     variableType = request.form.get("variableType", string)
     valueInDatabase = request.form.get("valueInDatabase", string)
     valueIntoDatabase = request.form.get("valueIntoDatabase", string)
@@ -172,6 +154,9 @@ def climateChangeUserInterfaceInputPage():
     rowIndex = request.form.get("rowIndex", string)
     replacementType = request.form.get("replacementType", string)
     returnToHome = request.form.get("returnToHome", string)
+    locationToEdit = request.form.get("locationToEdit", string)
+    if locationToEdit in locationNamesAllCaps.keys():
+        locationToEdit = locationNamesAllCaps[locationToEdit]
 
     # Record a null string value, in case any of the values were lost
     nullValueString = request.form.get("nullValueString", string)
